@@ -10,7 +10,7 @@
 
 ## Sobre
 
-O Menus Manager é um sistema web para gerenciamento de cardápios, que visa facilitar a escolha de itens do cardápio em estabelecimentos comerciais, deixando-a mais rápida e prática, além de diminuir o consumo de folhas de papel ao imprimir cardápios.
+O Menus Manager é um sistema web para gerenciamento de cardápios, que visa facilitar a escolha de itens do menu em estabelecimentos comerciais, deixando-a mais rápida e prática, além de diminuir o consumo de folhas de papel ao imprimir cardápios.
 
 Este sistema tem como objetivo o estudo de aplicações back-end na disciplina Desenvolvimento de Aplicações Back-End do curso de Tecnologias em Sistemas para Internet da UTFPR.
 
