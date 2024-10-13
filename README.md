@@ -3,7 +3,7 @@
 ## Índice
 
 - [Sobre](#sobre)
-- [Tecnologias a serem utilizadas](#tecnologias)
+- [Tecnologias a serem utilizadas](#tecnologias-a-serem-utilizadas)
 - [Como executar o projeto](#como-executar-o-projeto)
 - [Como contribuir](#como-contribuir)
 - [Licença](#licença)
