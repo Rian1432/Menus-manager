@@ -1,7 +1,8 @@
-<?php 
+<?php
+
 namespace App\Models;
 
-use Lib\Validations;    
+use Lib\Validations;
 use Core\Database\ActiveRecord\Model;
 
 class User extends Model
@@ -24,7 +25,7 @@ class User extends Model
             Validations::passwordConfirmation($this);
         }
     }
-    
+
     public function authenticate(string $password): bool
     {
         if ($this->encrypted_password == null) {
@@ -44,14 +45,12 @@ class User extends Model
         parent::__set($property, $value);
 
         if (
-            $property === 'password' 
-            && $this->newRecord() 
-            && $value !== null 
+            $property === 'password'
+            && $this->newRecord()
+            && $value !== null
             && $value !== ''
         ) {
             $this->encrypted_password = password_hash($value, PASSWORD_DEFAULT);
         }
     }
 }
-
-?>

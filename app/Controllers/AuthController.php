@@ -17,7 +17,7 @@ class AuthController extends Controller
         $title = 'Login';
         $this->render('auth/login', compact('title'));
     }
-    
+
     public function authenticate(Request $request): void
     {
         $params = $request->getParam('user');
