@@ -5,6 +5,13 @@ namespace App\Models;
 use Lib\Validations;
 use Core\Database\ActiveRecord\Model;
 
+/**
+ * @property string $name
+ * @property string $email
+ * @property string $encrypted_password
+ * @property string $role
+ *  */
+
 class User extends Model
 {
     protected static string $table = 'users';
