@@ -85,6 +85,7 @@ class UserTest extends TestCase
         $this->assertFalse($user->hasErrors());
 
         $this->assertEquals('não pode ser vazio!', $user->errors('name'));
+        $this->assertEquals('não pode ser vazio!', $user->errors('role'));
         $this->assertEquals('não pode ser vazio!', $user->errors('email'));
     }
 
