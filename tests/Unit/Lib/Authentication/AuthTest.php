@@ -5,6 +5,7 @@ namespace Tests\Unit\Lib\Authentication;
 use Lib\Authentication\Auth;
 use App\Models\User;
 use Tests\TestCase;
+use App\Enums\RolesEnum;
 
 class AuthTest extends TestCase
 {
@@ -17,6 +18,7 @@ class AuthTest extends TestCase
         $this->user = new User([
             'name' => 'User 1',
             'email' => 'fulano@example.com',
+            'role' => RolesEnum::ADMIN,
             'password' => '123456',
             'password_confirmation' => '123456'
         ]);
@@ -29,14 +31,14 @@ class AuthTest extends TestCase
         $_SESSION = [];
     }
 
-    public function testLogin(): void
+    public function test_login(): void
     {
         Auth::login($this->user);
 
         $this->assertEquals(1, $_SESSION['user']['id']);
     }
 
-    public function testUser(): void
+    public function test_user(): void
     {
         Auth::login($this->user);
 
@@ -45,14 +47,14 @@ class AuthTest extends TestCase
         $this->assertEquals($this->user->id, $userFromSession->id);
     }
 
-    public function testCheck(): void
+    public function test_Check(): void
     {
         Auth::login($this->user);
 
         $this->assertTrue(Auth::check());
     }
 
-    public function testLogout(): void
+    public function test_logout(): void
     {
         Auth::login($this->user);
         Auth::logout();
