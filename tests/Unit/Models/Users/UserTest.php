@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Models\Users;
 
+use App\Enums\RolesEnum;
 use App\Models\User;
 use Tests\TestCase;
 
@@ -17,6 +18,7 @@ class UserTest extends TestCase
         $this->user = new User([
             'name' => 'User 1',
             'email' => 'fulano@example.com',
+            'role' => RolesEnum::ADMIN,
             'password' => '123456',
             'password_confirmation' => '123456'
         ]);
@@ -25,6 +27,7 @@ class UserTest extends TestCase
         $this->user2 = new User([
             'name' => 'User 2',
             'email' => 'fulano1@example.com',
+            'role' => RolesEnum::ADMIN,
             'password' => '123456',
             'password_confirmation' => '123456'
         ]);
