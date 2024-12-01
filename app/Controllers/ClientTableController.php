@@ -14,7 +14,7 @@ class ClientTableController extends Controller
     public function index(Request $request): void
     {
         $title = 'Cardápio';
-        $table = ClientTable::findByTableNumber($request->getParam('id'));
+        $table = ClientTable::findByTableNumber($request->getParam('table_number'));
 
         FlashMessage::success('Seja bem-vindo à mesa ' . $table->table_number . '!');
         $this->render('client/index', compact('title', 'table'));

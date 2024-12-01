@@ -17,5 +17,5 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('valid-table')->group(function () {
-    Route::get('/table/{id}', [ClientTableController::class, 'index'])->name('client.index');
+    Route::get('/table/{table_number}', [ClientTableController::class, 'index'])->name('client.index');
 });

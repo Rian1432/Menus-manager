@@ -12,7 +12,7 @@ class ValidTable implements Middleware
 {
     public function handle(Request $request): void
     {
-        $tableNumber = $request->getParam('id');
+        $tableNumber = $request->getParam('table_number');
         $table = ClientTable::findByTableNumber($tableNumber);
 
         if (Auth::check()) {
