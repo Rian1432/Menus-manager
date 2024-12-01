@@ -8,7 +8,7 @@ class ClientRoutesTest extends FrameworkTestCase
 {
     public function test_should_redirect_if_not_valid_table_number(): void
     {
-        $page = file_get_contents('http://web/table/1');
+        $page = file_get_contents('http://web/table/');
 
         $statusCode = $http_response_header[0];
         $location = $http_response_header[10];
