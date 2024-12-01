@@ -2,9 +2,9 @@
 
 namespace Tests\Browser\ClientTable;
 
-use Tests\TestCase;
+use PHPUnit\Framework\TestCase as FrameworkTestCase;
 
-class ClientRoutesTest extends TestCase
+class ClientRoutesTest extends FrameworkTestCase
 {
     public function test_should_redirect_if_not_valid_table_number(): void
     {
