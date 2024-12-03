@@ -57,4 +57,14 @@ class Validations
 
         return true;
     }
+
+    public static function biggerThan($attribute, $value, $object)
+    {
+        if ($object->$attribute <= $value) {
+            $object->addError($attribute, "deve ser maior que {$value}");
+            return false;
+        }
+
+        return true;
+    }
 }
