@@ -25,6 +25,8 @@ class User extends Model
         Validations::notEmpty('name', $this);
         Validations::notEmpty('email', $this);
         Validations::notEmpty('role', $this);
+        Validations::notEmpty('password', $this);
+        Validations::notEmpty('password_confirmation', $this);
 
         Validations::uniqueness('email', $this);
 
