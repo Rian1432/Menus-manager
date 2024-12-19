@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Enums\RolesEnum;
 use App\Models\User;
 use Core\Http\Controllers\Controller;
 use Core\Http\Request;
@@ -38,7 +37,6 @@ class UsersController extends Controller
     public function create(Request $request): void
     {
         $user = new User($request->getParam('user'));
-        $user->role = RolesEnum::ADMIN;
 
         if ($user->save()) {
             FlashMessage::success('Usuário criado com sucesso');

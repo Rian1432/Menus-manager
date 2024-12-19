@@ -2,7 +2,6 @@
 
 namespace Database\Populate;
 
-use App\Enums\RolesEnum;
 use App\Models\User;
 
 class UsersPopulate
@@ -12,7 +11,7 @@ class UsersPopulate
         $data =  [
             'name' => 'Fulano',
             'email' => 'fulano@example.com',
-            'role' => RolesEnum::ADMIN,
+            'responsibility' => 'Gerente',
             'password' => '123456',
             'password_confirmation' => '123456',
         ];
@@ -26,7 +25,7 @@ class UsersPopulate
             $data =  [
                 'name' => 'Fulano ' . $i,
                 'email' => 'fulano' . $i . '@example.com',
-                'role' => RolesEnum::ADMIN,
+                'responsibility' => 'Gerente',
                 'password' => '123456',
                 'password_confirmation' => '123456'
             ];
