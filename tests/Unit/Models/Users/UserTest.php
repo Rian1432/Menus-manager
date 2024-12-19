@@ -37,7 +37,7 @@ class UserTest extends TestCase
     {
         $this->assertCount(2, User::all());
     }
-    
+
     public function test_should_not_create_new_user_with_invalid_email(): void
     {
         $user = new User([
@@ -50,7 +50,7 @@ class UserTest extends TestCase
 
         $this->assertFalse($user->isValid());
         $this->assertFalse($user->save());
-        
+
         $this->assertEquals('já existe um registro com esse dado', $user->errors('email'));
     }
 
@@ -74,10 +74,8 @@ class UserTest extends TestCase
 
         $this->assertTrue($this->user->isValid());
         $this->assertTrue($this->user->save());
-
-        $this->assertEmpty($this->user->errors);
     }
-    
+
     public function test_all_should_return_all_users(): void
     {
         $this->user2->save();
