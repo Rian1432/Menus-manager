@@ -56,6 +56,7 @@ class UsersController extends Controller
 
         $user->name = $params['name'];
         $user->email = $params['email'];
+        $user->responsibility = $params['responsibility'];
 
         if ($user->save()) {
             FlashMessage::success('Usuário atualizado com sucesso');

@@ -24,12 +24,22 @@ class User extends Model
     {
         Validations::notEmpty('name', $this);
         Validations::notEmpty('email', $this);
-        Validations::notEmpty('password', $this);
-        Validations::notEmpty('password_confirmation', $this);
+        Validations::notEmpty('responsibility', $this);
 
-        Validations::uniqueness('email', $this);
+        if ($this->id) {
+            $user = User::findById($this->id);
+
+            if ($user?->email !== $this->email) {
+                Validations::uniqueness('email', $this);
+            }
+        } else {
+            Validations::uniqueness('email', $this);
+        }
+
 
         if ($this->newRecord()) {
+            Validations::notEmpty('password', $this);
+            Validations::notEmpty('password_confirmation', $this);
             Validations::passwordConfirmation($this);
         }
     }

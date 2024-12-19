@@ -43,6 +43,25 @@
             <?= $user->errors('email') ? $user->errors('email') : '' ?>
         </div>
     </div>
+
+    <div>
+        <label for="user_responsibility" class="form-label">Cargo</label>
+
+        <input 
+            id="user_responsibility" 
+            type="text" 
+            class="form-control <?= $user->errors('responsibility') ? 'is-invalid' : '' ?>"
+            name="user[responsibility]"
+            value="<?= $user->responsibility ?>"
+            aria-describedby="user_responsibility_feedback"
+            maxlength="100"
+            required
+        >
+
+        <div id="user_responsibility_feedback" class="invalid-feedback d-flex">
+            <?= $user->errors('responsibility') ? $user->errors('responsibility') : '' ?>
+        </div>
+    </div>
     
     
     <div class="d-flex justify-content-between">
