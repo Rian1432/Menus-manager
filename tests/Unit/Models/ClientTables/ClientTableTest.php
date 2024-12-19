@@ -2,7 +2,6 @@
 
 namespace Tests\Unit\Models\ClientTables;
 
-use App\Enums\RolesEnum;
 use App\Models\ClientTable;
 use Tests\TestCase;
 
@@ -16,13 +15,11 @@ class ClientTableTest extends TestCase
         parent::setUp();
 
         $this->clientTable = new ClientTable([
-            'role' => RolesEnum::TABLE,
             'table_number' => 1,
         ]);
         $this->clientTable->save();
 
         $this->clientTable2 = new ClientTable([
-            'role' => RolesEnum::TABLE,
             'table_number' => 2,
         ]);
         $this->clientTable2->save();
@@ -36,7 +33,6 @@ class ClientTableTest extends TestCase
     public function test_should_not_create_new_client_table_with_invalid_table_number(): void
     {
         $testerTable = new ClientTable([
-            'role' => RolesEnum::TABLE,
             'table_number' => -1,
         ]);
         $testerTable->save();
@@ -48,7 +44,6 @@ class ClientTableTest extends TestCase
     public function test_should_not_create_new_client_table_with_duplicate_table_number(): void
     {
         $testerTable = new ClientTable([
-            'role' => RolesEnum::TABLE,
             'table_number' => 1,
         ]);
         $testerTable->save();
@@ -84,7 +79,6 @@ class ClientTableTest extends TestCase
         $this->assertFalse($testerTable->save());
         $this->assertFalse($testerTable->hasErrors());
 
-        $this->assertEquals('não pode ser vazio!', $testerTable->errors('role'));
         $this->assertEquals('deve ser maior que 0', $testerTable->errors('table_number'));
     }
 

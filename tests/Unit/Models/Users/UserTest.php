@@ -2,7 +2,6 @@
 
 namespace Tests\Unit\Models\Users;
 
-use App\Enums\RolesEnum;
 use App\Models\User;
 use Tests\TestCase;
 
@@ -18,7 +17,7 @@ class UserTest extends TestCase
         $this->user = new User([
             'name' => 'User 1',
             'email' => 'fulano@example.com',
-            'role' => RolesEnum::ADMIN,
+            'responsibility' => 'Gerente',
             'password' => '123456',
             'password_confirmation' => '123456'
         ]);
@@ -27,7 +26,7 @@ class UserTest extends TestCase
         $this->user2 = new User([
             'name' => 'User 2',
             'email' => 'fulano1@example.com',
-            'role' => RolesEnum::ADMIN,
+            'responsibility' => 'Gerente',
             'password' => '123456',
             'password_confirmation' => '123456'
         ]);
@@ -37,6 +36,44 @@ class UserTest extends TestCase
     public function test_should_create_new_user(): void
     {
         $this->assertCount(2, User::all());
+    }
+
+    public function test_should_not_create_new_user_with_invalid_email(): void
+    {
+        $user = new User([
+            'name' => 'User 3',
+            'email' => 'fulano@example.com',
+            'responsibility' => 'Gerente',
+            'password' => '123456',
+            'password_confirmation' => '1234567'
+        ]);
+
+        $this->assertFalse($user->isValid());
+        $this->assertFalse($user->save());
+
+        $this->assertEquals('já existe um registro com esse dado', $user->errors('email'));
+    }
+
+    public function test_should_not_edit_user_with_invalid_email(): void
+    {
+        $this->user->name = 'User edited';
+        $this->user->email = 'fulano1@example.com';
+        $this->user->responsibility = 'Gerente';
+
+        $this->assertFalse($this->user->isValid());
+        $this->assertFalse($this->user->save());
+
+        $this->assertEquals('já existe um registro com esse dado', $this->user->errors('email'));
+    }
+
+    public function test_should_edit_user_with_the_same_email(): void
+    {
+        $this->user->name = 'User edited';
+        $this->user->email = 'fulano@example.com';
+        $this->user->responsibility = 'Gerente';
+
+        $this->assertTrue($this->user->isValid());
+        $this->assertTrue($this->user->save());
     }
 
     public function test_all_should_return_all_users(): void
@@ -85,8 +122,10 @@ class UserTest extends TestCase
         $this->assertFalse($user->hasErrors());
 
         $this->assertEquals('não pode ser vazio!', $user->errors('name'));
-        $this->assertEquals('não pode ser vazio!', $user->errors('role'));
         $this->assertEquals('não pode ser vazio!', $user->errors('email'));
+        $this->assertEquals('não pode ser vazio!', $user->errors('responsibility'));
+        $this->assertEquals('não pode ser vazio!', $user->errors('password'));
+        $this->assertEquals('não pode ser vazio!', $user->errors('password_confirmation'));
     }
 
     public function test_errors_should_return_password_confirmation_error(): void
@@ -94,6 +133,7 @@ class UserTest extends TestCase
         $user = new User([
             'name' => 'User 3',
             'email' => 'fulano3@example.com',
+            'responsibility' => 'Gerente',
             'password' => '123456',
             'password_confirmation' => '1234567'
         ]);

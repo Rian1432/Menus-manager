@@ -1,0 +1,19 @@
+<h1 class="fs-3"><?= $title ?></h1>
+
+<a href="<?= route('users.index')?>" class="btn btn-primary mb-3">
+    Voltar
+</a>
+
+<div class="card">
+    <div class="card-body">
+        <p>
+            <?= $user->name ?>
+        </p>    
+        <p>
+            <?= $user->email ?>
+        </p>
+        <p>
+            <?= $user->responsibility ?>
+        </p>
+    </div>
+</div>
