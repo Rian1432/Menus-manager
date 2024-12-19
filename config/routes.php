@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
     // Users crud
     Route::get('/users', [UsersController::class, 'index'])->name('users.index');
     Route::get('/users/page/{page}', [UsersController::class, 'index'])->name('users.paginate');
+    Route::get('/users/{id}', [UsersController::class, 'show'])->name('users.show');
 
     Route::get('/users/new', [UsersController::class, 'new'])->name('users.new');
     Route::post('/users/create', [UsersController::class, 'create'])->name('users.create');

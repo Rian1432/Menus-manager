@@ -18,6 +18,14 @@ class UsersController extends Controller
         $this->render('admin/users/index', compact('title', 'users', 'paginator'));
     }
 
+    public function show(Request $request): void
+    {
+        $title = 'Visualizar usuário';
+        $user = User::findById($request->getParam('id'));
+
+        $this->render('admin/users/show', compact('title', 'user'));
+    }
+
     public function new(Request $request): void
     {
         $user = new User();

@@ -21,6 +21,14 @@
                 <td><?=$user->responsibility ?></td>
                 <td>
                     <div class="d-flex justify-content-end gap-3">
+                        <a href="<?= route('users.show', ['id' => $user->id]) ?>">
+                            <button class="btn btn-link p-0">
+                                <span class="material-symbols-outlined" style="color: lightblue;">
+                                    visibility
+                                </span>
+                            </button>
+                        </a>
+
                         <a href="<?= route('users.edit', ['id' => $user->id]) ?>">
                             <button class="btn btn-link p-0">
                                 <span class="material-symbols-outlined" style="color: orange;">
