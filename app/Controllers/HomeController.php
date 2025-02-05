@@ -11,6 +11,7 @@ class HomeController extends Controller
     public function index(Request $request): void
     {
         $title = 'Home';
-        $this->render('home/index', compact('title'));
+        $user = $this->current_user;
+        $this->render('admin/index', compact('title', 'user'));
     }
 }

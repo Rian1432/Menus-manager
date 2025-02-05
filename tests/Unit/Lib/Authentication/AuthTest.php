@@ -5,7 +5,6 @@ namespace Tests\Unit\Lib\Authentication;
 use Lib\Authentication\Auth;
 use App\Models\User;
 use Tests\TestCase;
-use App\Enums\RolesEnum;
 
 class AuthTest extends TestCase
 {
@@ -18,7 +17,7 @@ class AuthTest extends TestCase
         $this->user = new User([
             'name' => 'User 1',
             'email' => 'fulano@example.com',
-            'role' => RolesEnum::ADMIN,
+            'responsibility' => 'Gerente',
             'password' => '123456',
             'password_confirmation' => '123456'
         ]);

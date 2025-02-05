@@ -1,0 +1,72 @@
+<h1 class="fs-3"><?= $title ?></h1>
+
+<form 
+    action="<?= route('users.update', ['id' => $user->id]) ?>"
+    method="POST"
+    class="mb-0 d-flex flex-column gap-3"
+    novalidate
+>
+    <input type="hidden" name="_method" value="PUT">    
+    
+    <div>
+        <label for="user_name" class="form-label">Nome</label>
+
+        <input 
+            id="user_name"
+            type="text"
+            class="form-control <?= $user->errors('name') ? 'is-invalid' : '' ?>"
+            name="user[name]"
+            value="<?= $user->name ?>"
+            aria-describedby="user_name_feedback"
+            required
+        >
+
+        <div id="user_name_feedback" class="invalid-feedback d-flex">
+            <?= $user->errors('name') ? $user->errors('name') : '' ?>
+        </div>
+    </div>
+    
+    <div>
+        <label for="user_email" class="form-label">Email</label>
+
+        <input 
+            id="user_email" 
+            type="email" 
+            class="form-control <?= $user->errors('email') ? 'is-invalid' : '' ?>"
+            name="user[email]" 
+            value="<?= $user->email ?>"
+            aria-describedby="user_email_feedback"
+            required
+        >
+
+        <div id="user_email_feedback" class="invalid-feedback d-flex">
+            <?= $user->errors('email') ? $user->errors('email') : '' ?>
+        </div>
+    </div>
+
+    <div>
+        <label for="user_responsibility" class="form-label">Cargo</label>
+
+        <input 
+            id="user_responsibility" 
+            type="text" 
+            class="form-control <?= $user->errors('responsibility') ? 'is-invalid' : '' ?>"
+            name="user[responsibility]"
+            value="<?= $user->responsibility ?>"
+            aria-describedby="user_responsibility_feedback"
+            maxlength="100"
+            required
+        >
+
+        <div id="user_responsibility_feedback" class="invalid-feedback d-flex">
+            <?= $user->errors('responsibility') ? $user->errors('responsibility') : '' ?>
+        </div>
+    </div>
+    
+    
+    <div class="d-flex justify-content-between">
+        <a href="<?=route('users.index') ?>" class="btn btn-secondary">Voltar</a>
+
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </div>
+</form>

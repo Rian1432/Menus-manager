@@ -6,22 +6,20 @@ use Lib\Validations;
 use Core\Database\ActiveRecord\Model;
 
 /**
- * @property string $role
  * @property number $table_number
  * @property string $link_token
  *  */
 
 class ClientTable extends Model
 {
-    protected static string $table = 'users';
-    protected static array $columns = ['role', 'table_number', 'link_token'];
+    protected static string $table = 'client_tables';
+    protected static array $columns = ['table_number', 'link_token'];
 
     protected ?string $table_number = null;
     protected ?string $link_token = null;
 
     public function validates(): void
     {
-        Validations::notEmpty('role', $this);
         Validations::notEmpty('table_number', $this);
         Validations::biggerThan('table_number', 0, $this);
 

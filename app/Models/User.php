@@ -8,14 +8,14 @@ use Core\Database\ActiveRecord\Model;
 /**
  * @property string $name
  * @property string $email
+ * @property string $responsibility
  * @property string $encrypted_password
- * @property string $role
  *  */
 
 class User extends Model
 {
     protected static string $table = 'users';
-    protected static array $columns = ['name', 'email', 'encrypted_password', 'role'];
+    protected static array $columns = ['name', 'email', 'responsibility', 'encrypted_password'];
 
     protected ?string $password = null;
     protected ?string $password_confirmation = null;
@@ -24,11 +24,22 @@ class User extends Model
     {
         Validations::notEmpty('name', $this);
         Validations::notEmpty('email', $this);
-        Validations::notEmpty('role', $this);
+        Validations::notEmpty('responsibility', $this);
 
-        Validations::uniqueness('email', $this);
+        if ($this->id) {
+            $user = User::findById($this->id);
+
+            if ($user?->email !== $this->email) {
+                Validations::uniqueness('email', $this);
+            }
+        } else {
+            Validations::uniqueness('email', $this);
+        }
+
 
         if ($this->newRecord()) {
+            Validations::notEmpty('password', $this);
+            Validations::notEmpty('password_confirmation', $this);
             Validations::passwordConfirmation($this);
         }
     }

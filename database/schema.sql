@@ -5,7 +5,14 @@ CREATE TABLE users (
   name VARCHAR(255),
   email VARCHAR(255),
   encrypted_password VARCHAR(255),
-  role ENUM('Administrador', 'Mesa') NOT NULL,
+  responsibility VARCHAR(100),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+DROP TABLE IF EXISTS client_tables;
+
+CREATE TABLE client_tables (
+  id INT AUTO_INCREMENT PRIMARY KEY,
   table_number INT,
   link_token VARCHAR(255),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
