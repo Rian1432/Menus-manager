@@ -1,3 +1,5 @@
+SET foreign_key_checks = 0;
+
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
@@ -17,3 +19,15 @@ CREATE TABLE client_tables (
   link_token VARCHAR(255),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+DROP TABLE IF EXISTS orders;
+
+CREATE TABLE orders (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  client_table_id INT NOT NULL references client_tables(id) ON DELETE CASCADE,
+  user_id INT references users(id),
+  status VARCHAR(100),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+SET foreign_key_checks = 1;

@@ -1,0 +1,44 @@
+<h1 class="fs-3"><?= $title ?></h1>
+
+<div class="d-flex justify-content-end mb-3">
+    <form 
+        action="<?='/table/' . $table->table_number . '/orders/create'?>" 
+        method="POST"
+        class="mb-0 d-flex flex-column gap-3"
+        novalidate
+    >
+        <button type="submit" class="btn btn-primary">Novo Pedido</a>
+    </form>
+</div>
+
+<table class="table table-striped table-hover align-middle border">
+    <thead>
+        <tr>
+            <th>Número</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <?php foreach ($orders as $order) : ?>
+            <tr>
+                <td>#<?=$order->id ?></td>
+                <td><?=$order->status ?></td>
+                <td>
+                    <div class="d-flex justify-content-end gap-3">
+                        <a href="<?= route('orders.show', ['table_number' => $table->table_number, 'id' => $order->id]) ?>">
+                            <button class="btn btn-link p-0">
+                                <span class="material-symbols-outlined" style="color: lightblue;">
+                                    visibility
+                                </span>
+                            </button>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        <? endforeach ?>
+    </tbody>
+</table>
+
+
+<?php $paginator->renderPagesNavigation(); ?>

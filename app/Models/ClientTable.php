@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Lib\Validations;
 use Core\Database\ActiveRecord\Model;
+use Core\Database\ActiveRecord\HasMany;
 
 /**
  * @property number $table_number
@@ -17,6 +18,11 @@ class ClientTable extends Model
 
     protected ?string $table_number = null;
     protected ?string $link_token = null;
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class, 'client_table_id');
+    }
 
     public function validates(): void
     {

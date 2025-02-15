@@ -3,6 +3,7 @@
 use App\Controllers\AuthController;
 use App\Controllers\ClientTableController;
 use App\Controllers\HomeController;
+use App\Controllers\OrderController;
 use App\Controllers\UsersController;
 use Core\Router\Route;
 
@@ -22,7 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/users/create', [UsersController::class, 'create'])->name('users.create');
 
     Route::get('/users', [UsersController::class, 'index'])->name('users.index');
-    Route::get('/users/page/{page}', [UsersController::class, 'index'])->name('users.paginate');
+    Route::get('/users/page', [UsersController::class, 'index'])->name('users.paginate');
     Route::get('/users/{id}', [UsersController::class, 'show'])->name('users.show');
 
     Route::get('/users/{id}/edit', [UsersController::class, 'edit'])->name('users.edit');
@@ -34,4 +35,8 @@ Route::middleware('auth')->group(function () {
 // Client routes
 Route::middleware('valid-table')->group(function () {
     Route::get('/table/{table_number}', [ClientTableController::class, 'index'])->name('client.index');
+
+    Route::get('/table/{table_number}/orders', [OrderController::class, 'index'])->name('table.orders.paginate');
+    Route::post('/table/{table_number}/orders/create', [OrderController::class, 'create'])->name('orders.create');
+    Route::get('/table/{table_number}/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
 });
