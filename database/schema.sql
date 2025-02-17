@@ -24,10 +24,12 @@ DROP TABLE IF EXISTS orders;
 
 CREATE TABLE orders (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  client_table_id INT NOT NULL references client_tables(id) ON DELETE CASCADE,
-  user_id INT references users(id),
+  client_table_id INT NOT NULL,
+  user_id INT,
   status VARCHAR(100),
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (client_table_id) REFERENCES client_tables(id) ON DELETE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 SET foreign_key_checks = 1;
