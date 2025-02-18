@@ -15,7 +15,10 @@ class OrderController extends Controller
     {
         $title = 'Pedidos';
         $table = ClientTable::findByTableNumber($request->getParam('table_number'));
-        $paginator = $table->orders()->paginate(page: $request->getParam('page', 1), route: route('table.orders.paginate', ['table_number' => $table->table_number]));
+        $paginator = $table->orders()->paginate(
+            page: $request->getParam('page', 1),
+            route: route('table.orders.paginate', ['table_number' => $table->table_number])
+        );
         $orders = $paginator->registers();
 
         $this->render('client/orders/index', compact('title', 'table', 'orders', 'paginator'));

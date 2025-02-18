@@ -24,9 +24,4 @@ class Order extends Model
         Validations::notEmpty('client_table_id', $this);
         Validations::notEmpty('status', $this);
     }
-
-    public static function findByClientTableId(string $clientTableId): Order | null
-    {
-        return Order::findBy(['client_table_id' => $clientTableId]);
-    }
 }
