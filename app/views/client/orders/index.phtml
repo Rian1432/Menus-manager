@@ -23,7 +23,7 @@
         <?php foreach ($orders as $order) : ?>
             <tr>
                 <td>#<?=$order->id ?></td>
-                <td><?=$order->status ?></td>
+                <td><?=$order->status  === "open" ? "aberto" : "fechado" ?></td>
                 <td>
                     <div class="d-flex justify-content-end gap-3">
                         <a href="<?= route('orders.show', ['table_number' => $table->table_number, 'id' => $order->id]) ?>">

@@ -71,7 +71,10 @@ class OrderTest extends TestCase
 
     public function test_destroy_order_when_remove_the_client_table(): void
     {
+        $this->clientTable->orders()->new(['status' => 'open'])->save();
+        $this->clientTable->orders()->new(['status' => 'open'])->save();
         $this->clientTable->destroy();
-        $this->assertCount(0, ClientTable::all());
+
+        $this->assertCount(0, Order::all());
     }
 }
