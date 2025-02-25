@@ -6,6 +6,7 @@ use App\Controllers\HomeController;
 use App\Controllers\OrderController;
 use App\Controllers\TableController;
 use App\Controllers\UsersController;
+use App\Controllers\ProfileController;
 use Core\Router\Route;
 
 // Authentication
@@ -13,11 +14,17 @@ Route::get('/login', [AuthController::class, 'index'])->name('users.login');
 Route::post('/login', [AuthController::class, 'authenticate']);
 
 // Logout
-Route::get('/logout', [AuthController::class, 'destroy']);
+Route::get('/logout', [AuthController::class, 'destroy'])->name('users.logout');
 
 // Admin routes
 Route::middleware('auth')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('root');
+
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::post('/profile/avatar', [ProfileController::class, 'updateAvatar'])->name('profile.avatar');
+
+    // profile
+    Route::get('/profile', [UsersController::class, 'profile'])->name('users.profile');
 
     // Users crud
     Route::get('/users/new', [UsersController::class, 'new'])->name('users.new');
