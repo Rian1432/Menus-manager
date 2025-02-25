@@ -26,18 +26,4 @@ class ProfileController extends Controller
 
         $this->redirectTo(route('profile.show'));
     }
-
-    public function deleteAvatar(): void
-    {
-        $image = $_FILES['user_avatar'];
-
-
-        if ($this->current_user->avatar()->update($image)) {
-            FlashMessage::success('Avatar atualizado com sucesso');
-        } else {
-            FlashMessage::danger('Arquivo inválido');
-        }
-
-        $this->redirectTo(route('profile.show'));
-    }
 }

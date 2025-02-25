@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::post('/profile/avatar', [ProfileController::class, 'updateAvatar'])->name('profile.avatar');
+    Route::put('/profile/avatar', [ProfileController::class, 'deleteAvatar'])->name('profile.avatar.remove');
 
     // profile
     Route::get('/profile', [UsersController::class, 'profile'])->name('users.profile');
