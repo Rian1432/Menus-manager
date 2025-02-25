@@ -9,15 +9,6 @@
             </div>
         </form>
 
-        <?php if ($this->current_user->avatar_name) : ?>
-            <form action="<?= route('profile.avatar.remove') ?>" method="POST">
-                <input type="hidden" name="_method" value="PUT">  
-                <div class="d-grid mt-2">
-                    <button id="remove_image" type="submit" class="btn btn-fill btn-primary">Remover</button>
-                </div>
-            </form>
-        <?php endif ?>
-
     </div>
     <div class="mx-5">
         <div class="rounded">

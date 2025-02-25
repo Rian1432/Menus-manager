@@ -80,7 +80,7 @@ class UsersController extends Controller
     public function destroy(Request $request): void
     {
         $user = User::findById($request->getParam('id'));
-        
+
         if ($user->destroy()) {
             $user->avatar()->delete();
             FlashMessage::success('Usuário deletado com sucesso');
