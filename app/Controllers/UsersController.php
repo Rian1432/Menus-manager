@@ -82,6 +82,7 @@ class UsersController extends Controller
         $user = User::findById($request->getParam('id'));
 
         if ($user->destroy()) {
+            $user->avatar()->delete();
             FlashMessage::success('Usuário deletado com sucesso');
         } else {
             FlashMessage::danger('Erro ao deletar usuário');

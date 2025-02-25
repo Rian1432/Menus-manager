@@ -34,9 +34,17 @@
                     </li>
                 </ul>
 
-                <form action="/logout" method="get" class="d-flex align-items-center m-0" role="search">
-                    <input type="submit" class="btn btn-primary btn-block" value="Sair">
-                </form>
+
+                <div class="dropstart">
+                    <button class="btn btn-primary dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-list"></i>
+                    </button>
+
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="<?= route('profile.show') ?>">Perfil</a>
+                        <a class="dropdown-item" href="<?= route('users.logout') ?>">Sair</a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>

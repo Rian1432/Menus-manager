@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\ProfileAvatar;
 use Lib\Validations;
 use Core\Database\ActiveRecord\Model;
 
@@ -10,12 +11,13 @@ use Core\Database\ActiveRecord\Model;
  * @property string $email
  * @property string $responsibility
  * @property string $encrypted_password
+ * @property string $avatar_name
  *  */
 
 class User extends Model
 {
     protected static string $table = 'users';
-    protected static array $columns = ['name', 'email', 'responsibility', 'encrypted_password'];
+    protected static array $columns = ['name', 'email', 'responsibility', 'encrypted_password', 'avatar_name'];
 
     protected ?string $password = null;
     protected ?string $password_confirmation = null;
@@ -70,5 +72,10 @@ class User extends Model
         ) {
             $this->encrypted_password = password_hash($value, PASSWORD_DEFAULT);
         }
+    }
+
+    public function avatar(): ProfileAvatar
+    {
+        return new ProfileAvatar($this);
     }
 }

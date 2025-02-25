@@ -8,6 +8,7 @@ CREATE TABLE users (
   email VARCHAR(255),
   encrypted_password VARCHAR(255),
   responsibility VARCHAR(100),
+  avatar_name VARCHAR(65),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
