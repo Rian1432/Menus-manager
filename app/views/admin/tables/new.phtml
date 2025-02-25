@@ -1,0 +1,32 @@
+<h1 class="fs-3"><?= $title ?></h1>
+
+<form 
+    action="<?=route('tables.create') ?>" 
+    method="POST"
+    class="mb-0 d-flex flex-column gap-3"
+    novalidate
+>
+    <div>
+        <label for="table_number" class="form-label">Número da mesa</label>
+
+        <input 
+            id="table_number"
+            type="number"
+            class="form-control <?= $table->errors('table_number') ? 'is-invalid' : '' ?>"
+            name="table[table_number]"
+            value="<?= $table->table_number ?>"
+            aria-describedby="table_number_feedback"
+            required
+        >
+
+        <div id="table_number_feedback" class="invalid-feedback d-flex">
+            <?= $table->errors('table_number') ? $table->errors('table_number') : '' ?>
+        </div>
+    </div>
+    
+    <div class="d-flex justify-content-between">
+        <a href="<?=route('tables.paginate') ?>" class="btn btn-secondary">Voltar</a>
+
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </div>
+</form>

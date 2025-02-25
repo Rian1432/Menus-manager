@@ -12,7 +12,7 @@ class UsersController extends Controller
     public function index(Request $request): void
     {
         $title = 'Usuários';
-        $paginator = User::paginate(page: $request->getParam('page', 1));
+        $paginator = User::paginate(page: $request->getParam('page', 1), route: route('users.paginate'));
         $users = $paginator->registers();
 
         $this->render('admin/users/index', compact('title', 'users', 'paginator'));

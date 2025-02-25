@@ -3,7 +3,7 @@
 
         <?php if ($paginator->hasPreviousPage()) : ?>
             <li class="page-item">
-                <a class="page-link" href="<?= route($paginator->getRouteName(), ['page' => $paginator->previousPage()]) ?>">Anterior</a>
+                <a class="page-link" href="<?= $paginator->getRouteName() . '?page=' . $paginator->previousPage() ?>">Anterior</a>
             </li>
         <?php else : ?>
             <li class="page-item disabled">
@@ -13,13 +13,13 @@
 
         <?php for ($page = 1; $page <= $paginator->totalOfPages(); $page++) : ?>
             <li class="page-item <?= $paginator->isPage($page) ? 'active' : '' ?>">
-                <a class="page-link" href="<?= route($paginator->getRouteName(), ['page' => $page]) ?>"><?= $page ?></a>
+                <a class="page-link" href="<?= $paginator->getRouteName() . '?page=' . $page ?>"><?= $page ?></a>
             </li>
         <?php endfor; ?>
 
         <?php if ($paginator->hasNextPage()) : ?>
             <li class="page-item">
-                <a class="page-link" href="<?= route($paginator->getRouteName(), ['page' => $paginator->nextPage()]) ?>">Próxima</a>
+                <a class="page-link" href="<?= $paginator->getRouteName() . '?page=' . $paginator->nextPage() ?>">Próxima</a>
             </li>
         <?php else : ?>
             <li class="page-item disabled">

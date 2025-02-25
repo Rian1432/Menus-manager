@@ -1,0 +1,17 @@
+<h1 class="fs-3"><?= $title ?></h1>
+
+<a href="<?= route('table.orders.paginate', ['table_number' => $table->table_number])?>" class="btn btn-primary mb-3">
+    Voltar
+</a>
+
+<div class="card">
+    <div class="card-body">
+        <p>
+            #<?=$order->id ?>
+        </p>    
+        
+        <p>
+            <?= $order->status ?>
+        </p>
+    </div>
+</div>
